@@ -43,7 +43,7 @@ tasks.withType<Test> {
 }
 
 springBoot {
-	mainClass.set("com.example.sb3.Sb3ApplicationKt")
+	mainClass.set("com.example.sb3.App")
 	buildInfo {
 		properties {
 			name.set("Learn Spring Boot 3")
@@ -54,10 +54,10 @@ springBoot {
 // or
 
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
-	//mainClass.set("com.example.sb3.Sb3ApplicationKt")
+	//mainClass.set("com.example.sb3.App")
 	// or
 	//manifest {
-	//	attributes("Start-Class" to "com.example.sb3.Sb3ApplicationKt")
+	//	attributes("Start-Class" to "com.example.sb3.App")
 	//}
 
 	launchScript()
@@ -67,7 +67,7 @@ tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
 }
 
 //application {
-//	mainClass.set("com.example.sb3.Sb3ApplicationKt")
+//	mainClass.set("com.example.sb3.App")
 //}
 //
 //tasks {
