@@ -5,6 +5,7 @@ plugins {
 	id("org.springframework.boot")
 	kotlin("jvm")
 	kotlin("plugin.spring")
+	kotlin("plugin.jpa")
 	id("com.gorylenko.gradle-git-properties")
 //	id("io.spring.dependency-management")
 //	application
@@ -28,7 +29,8 @@ configurations {
 val mapstructVersion: String by project
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-graphql")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("com.h2database:h2")
@@ -40,6 +42,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 }
 
 tasks.withType<JavaCompile> {
@@ -47,7 +50,8 @@ tasks.withType<JavaCompile> {
 		listOf(
 			"-Amapstruct.suppressGeneratorTimestamp=true",
 			"-Amapstruct.suppressGeneratorVersionInfoComment=true",
-			"-Amapstruct.defaultComponentModel=spring"
+			"-Amapstruct.defaultComponentModel=spring",
+			"-Amapstruct.verbose=true"
 		)
 	)
 }

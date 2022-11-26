@@ -16,6 +16,7 @@ pluginManagement {
         id("io.spring.dependency-management") version depVersion
         kotlin("jvm") version kotlinVersion
         kotlin("plugin.spring") version kotlinVersion
+        kotlin("plugin.jpa") version kotlinVersion
         id("com.github.johnrengelman.shadow") version shadowVersion
         id("com.gorylenko.gradle-git-properties") version gitPropVersion
     }
