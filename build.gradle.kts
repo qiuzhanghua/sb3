@@ -19,9 +19,19 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	compileOnly {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
+}
+
+val mapstructVersion: String by project
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("com.h2database:h2")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -29,6 +39,17 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+}
+
+tasks.withType<JavaCompile> {
+	options.compilerArgs.addAll(
+		listOf(
+			"-Amapstruct.suppressGeneratorTimestamp=true",
+			"-Amapstruct.suppressGeneratorVersionInfoComment=true",
+			"-Amapstruct.defaultComponentModel=spring"
+		)
+	)
 }
 
 tasks.withType<KotlinCompile> {
