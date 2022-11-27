@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm")
 	kotlin("plugin.spring")
 	kotlin("plugin.jpa")
+//	kotlin("kapt")
 	id("com.gorylenko.gradle-git-properties")
 //	id("io.spring.dependency-management")
 //	application
@@ -28,6 +29,7 @@ configurations {
 
 val mapstructVersion: String by project
 val guavaVersion: String by project
+val querydslVersion: String by project
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -43,10 +45,22 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
-	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 	implementation("com.google.guava:guava:${guavaVersion}")
 	implementation("org.apache.commons:commons-lang3:3.12.0")
 	implementation("org.apache.commons:commons-collections4:4.4")
+
+	implementation("com.querydsl:querydsl-jpa:${querydslVersion}:jakarta")
+	implementation("com.querydsl:querydsl-core:${querydslVersion}")
+	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+
+	// process Java
+	annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+	annotationProcessor("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
+	annotationProcessor("com.querydsl:querydsl-codegen:${querydslVersion}")
+
+	// User kotlin
+//	kapt("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
+//	kapt("com.querydsl:querydsl-kotlin-codegen:${querydslVersion}")
 }
 
 tasks.withType<JavaCompile> {
@@ -55,7 +69,7 @@ tasks.withType<JavaCompile> {
 			"-Amapstruct.suppressGeneratorTimestamp=true",
 			"-Amapstruct.suppressGeneratorVersionInfoComment=true",
 			"-Amapstruct.defaultComponentModel=spring",
-			"-Amapstruct.verbose=true"
+//			"-Amapstruct.verbose=true"
 		)
 	)
 }

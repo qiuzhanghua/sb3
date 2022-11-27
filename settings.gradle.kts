@@ -17,10 +17,9 @@ pluginManagement {
         kotlin("jvm") version kotlinVersion
         kotlin("plugin.spring") version kotlinVersion
         kotlin("plugin.jpa") version kotlinVersion
+        kotlin("kapt") version kotlinVersion
         id("com.github.johnrengelman.shadow") version shadowVersion
         id("com.gorylenko.gradle-git-properties") version gitPropVersion
     }
-
-    extra["kotlin.version"] = "1.7.2"
 }
 

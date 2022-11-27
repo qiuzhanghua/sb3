@@ -13,3 +13,9 @@ http -v GET :8080/api/role
 
 ## GraphQL
 query roles support only
+
+
+## QueryDSL support
+see commandLineRunner in com.example.sb3.App
+
+tested both with java and kotlin
