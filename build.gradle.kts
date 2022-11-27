@@ -27,6 +27,7 @@ configurations {
 }
 
 val mapstructVersion: String by project
+val guavaVersion: String by project
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -43,6 +44,7 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
 	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+	implementation("com.google.guava:guava:${guavaVersion}")
 }
 
 tasks.withType<JavaCompile> {
