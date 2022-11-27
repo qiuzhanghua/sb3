@@ -45,6 +45,8 @@ dependencies {
 	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
 	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 	implementation("com.google.guava:guava:${guavaVersion}")
+	implementation("org.apache.commons:commons-lang3:3.12.0")
+	implementation("org.apache.commons:commons-collections4:4.4")
 }
 
 tasks.withType<JavaCompile> {
