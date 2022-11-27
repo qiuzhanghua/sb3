@@ -31,6 +31,10 @@ val mapstructVersion: String by project
 val guavaVersion: String by project
 val querydslVersion: String by project
 
+// Customizing Tomcat version to 10.1.2 instead of 10.1.1
+// extra["tomcat.version"] = "10.1.2"
+// or defined in gradle.properties
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-graphql")

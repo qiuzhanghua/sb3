@@ -21,5 +21,6 @@ pluginManagement {
         id("com.github.johnrengelman.shadow") version shadowVersion
         id("com.gorylenko.gradle-git-properties") version gitPropVersion
     }
+
 }
 
