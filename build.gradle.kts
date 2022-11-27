@@ -58,7 +58,7 @@ dependencies {
 	annotationProcessor("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
 	annotationProcessor("com.querydsl:querydsl-codegen:${querydslVersion}")
 
-	// User kotlin
+	// Use kotlin
 //	kapt("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
 //	kapt("com.querydsl:querydsl-kotlin-codegen:${querydslVersion}")
 }
