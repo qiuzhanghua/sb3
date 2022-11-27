@@ -1,5 +1,7 @@
 # Learn Spring Boot 3
 
+### Java 17/18/19 required
+
 ## actuator 
 http://localhost:9999/
 
