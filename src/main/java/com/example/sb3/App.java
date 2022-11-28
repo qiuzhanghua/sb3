@@ -2,7 +2,7 @@ package com.example.sb3;
 
 import com.example.sb3.domain.QRole;
 import com.example.sb3.domain.Role;
-import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,15 +22,13 @@ public class App {
     @Bean
     public CommandLineRunner commandLineRunner(EntityManagerFactory emf) {
         return args -> {
-            Role user = new Role();
-            user.setName("user");
+            Role role1 = new Role();
+            role1.setName("user");
             EntityManager em = emf.createEntityManager();
             jakarta.persistence.EntityTransaction t = em.getTransaction();
             t.begin();
-            em.persist(user);
+            em.persist(role1);
             t.commit();
-            em.close();
-            em = emf.createEntityManager();
 
             // for kapt use
 //            QRole role = new QRole("role");
@@ -39,10 +37,24 @@ public class App {
 
             // for annotationProcessor("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
             QRole role = QRole.role;
-            JPAQuery<?> query = new JPAQuery<Void>(em);
-            List<Role> list = query.select(role).from(role).fetch();
+            JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+            List<Role> list = queryFactory.select(role).from(role).fetch();
             System.out.println(list);
+
+            // delete or update
+            t = em.getTransaction();
+            t.begin();
+            queryFactory.delete(role)
+                    .where(role.name.eq("user"))
+                    .execute();
+            t.commit();
             em.close();
+
         };
     }
 }
+
+
+// https://www.baeldung.com/intro-to-querydsl
+// https://www.jianshu.com/p/8bb33f86d158
+// https://juejin.cn/post/6908990542583955469
