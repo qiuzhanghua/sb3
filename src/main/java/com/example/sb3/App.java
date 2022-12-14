@@ -1,8 +1,10 @@
 package com.example.sb3;
 
-import com.example.sb3.domain.QRole;
+import com.blazebit.persistence.CriteriaBuilder;
+import com.blazebit.persistence.CriteriaBuilderFactory;
+import com.blazebit.persistence.DeleteCriteriaBuilder;
+import com.blazebit.persistence.InsertCriteriaBuilder;
 import com.example.sb3.domain.Role;
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +22,8 @@ public class App {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(EntityManagerFactory emf) {
+    public CommandLineRunner commandLineRunner(EntityManagerFactory emf,
+                                               CriteriaBuilderFactory cbf) {
         return args -> {
             Role role1 = new Role();
             role1.setName("user");
@@ -30,31 +33,21 @@ public class App {
             em.persist(role1);
             t.commit();
 
-            // for kapt use
-//            QRole role = new QRole("role");
-//            // or
-//            role = QRole.Companion.getRole();
+            CriteriaBuilder<Role> cb = cbf.create(em, Role.class);
+            List<Role> roles = cb.getResultList();
+            System.out.println(roles);
 
-            // for annotationProcessor("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
-            QRole role = QRole.role;
-            JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-            List<Role> list = queryFactory.select(role).from(role).fetch();
-            System.out.println(list);
-
-            // delete or update
             t = em.getTransaction();
             t.begin();
-            queryFactory.delete(role)
-                    .where(role.name.eq("user"))
-                    .execute();
+            DeleteCriteriaBuilder<Role> dcb = cbf.delete(em, Role.class, "role")
+                    .where("role.name").eq("user");
+            int count = dcb.executeUpdate();
+            System.out.println(count);
             t.commit();
             em.close();
-
         };
     }
 }
 
-
-// https://www.baeldung.com/intro-to-querydsl
-// https://www.jianshu.com/p/8bb33f86d158
-// https://juejin.cn/post/6908990542583955469
+// https://www.baeldung.com/blaze-persistence-tutorial
+// https://persistence.blazebit.com/

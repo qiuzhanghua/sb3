@@ -30,6 +30,7 @@ configurations {
 val mapstructVersion: String by project
 val guavaVersion: String by project
 val querydslVersion: String by project
+val blazeVersion: String by project
 
 // Customizing Tomcat version to 10.1.2 instead of 10.1.1
 // extra["tomcat.version"] = "10.1.2"
@@ -53,14 +54,20 @@ dependencies {
 	implementation("org.apache.commons:commons-lang3:3.12.0")
 	implementation("org.apache.commons:commons-collections4:4.4")
 
-	implementation("com.querydsl:querydsl-jpa:${querydslVersion}:jakarta")
-	implementation("com.querydsl:querydsl-core:${querydslVersion}")
-	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+	implementation("com.blazebit:blaze-persistence-core-api-jakarta:${blazeVersion}")
+	implementation("com.blazebit:blaze-persistence-core-impl-jakarta:${blazeVersion}")
+	runtimeOnly("com.blazebit:blaze-persistence-integration-hibernate-6.0:${blazeVersion}")
+	implementation("com.blazebit:blaze-persistence-integration-querydsl-expressions-jakarta:${blazeVersion}")
+	implementation("com.blazebit:blaze-persistence-integration-spring-data-2.7:${blazeVersion}")
 
-	// process Java
-	annotationProcessor("jakarta.persistence:jakarta.persistence-api")
-	annotationProcessor("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
-	annotationProcessor("com.querydsl:querydsl-codegen:${querydslVersion}")
+//	implementation("com.querydsl:querydsl-jpa:${querydslVersion}:jakarta")
+//	implementation("com.querydsl:querydsl-core:${querydslVersion}")
+//	annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+//
+//	// process Java
+//	annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+//	annotationProcessor("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
+//	annotationProcessor("com.querydsl:querydsl-codegen:${querydslVersion}")
 
 	// Use kotlin
 //	kapt("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
