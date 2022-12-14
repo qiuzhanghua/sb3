@@ -49,16 +49,27 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
-	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
 	implementation("com.google.guava:guava:${guavaVersion}")
 	implementation("org.apache.commons:commons-lang3:3.12.0")
 	implementation("org.apache.commons:commons-collections4:4.4")
 
 	implementation("com.blazebit:blaze-persistence-core-api-jakarta:${blazeVersion}")
-	implementation("com.blazebit:blaze-persistence-core-impl-jakarta:${blazeVersion}")
+	runtimeOnly("com.blazebit:blaze-persistence-core-impl-jakarta:${blazeVersion}")
+	implementation("com.blazebit:blaze-persistence-entity-view-api-jakarta:${blazeVersion}")
+	runtimeOnly("com.blazebit:blaze-persistence-entity-view-impl-jakarta:${blazeVersion}")
 	runtimeOnly("com.blazebit:blaze-persistence-integration-hibernate-6.0:${blazeVersion}")
-	implementation("com.blazebit:blaze-persistence-integration-querydsl-expressions-jakarta:${blazeVersion}")
+	compileOnly("com.blazebit:blaze-persistence-entity-view-processor:${blazeVersion}")
+	implementation("com.blazebit:blaze-persistence-integration-entity-view-spring:${blazeVersion}")
+
+//	implementation("com.blazebit:blaze-persistence-integration-querydsl-expressions-jakarta:${blazeVersion}")
 	implementation("com.blazebit:blaze-persistence-integration-spring-data-2.7:${blazeVersion}")
+
+	compileOnly("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
+	compileOnly("com.sun.xml.bind:jaxb-impl:4.0.1")
+	compileOnly("jakarta.transaction:jakarta.transaction-api:2.0.1")
+	compileOnly("jakarta.activation:jakarta.activation-api:2.1.0")
+	compileOnly("jakarta.annotation:jakarta.annotation-api:2.1.1")
+//	compileOnly("jakarta.persistence:jakarta.persistence-api:3.1.0")
 
 //	implementation("com.querydsl:querydsl-jpa:${querydslVersion}:jakarta")
 //	implementation("com.querydsl:querydsl-core:${querydslVersion}")
@@ -74,16 +85,6 @@ dependencies {
 //	kapt("com.querydsl:querydsl-kotlin-codegen:${querydslVersion}")
 }
 
-tasks.withType<JavaCompile> {
-	options.compilerArgs.addAll(
-		listOf(
-			"-Amapstruct.suppressGeneratorTimestamp=true",
-			"-Amapstruct.suppressGeneratorVersionInfoComment=true",
-			"-Amapstruct.defaultComponentModel=spring",
-//			"-Amapstruct.verbose=true"
-		)
-	)
-}
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {

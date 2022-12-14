@@ -3,6 +3,8 @@ package com.example.sb3;
 import com.blazebit.persistence.Criteria;
 import com.blazebit.persistence.CriteriaBuilderFactory;
 import com.blazebit.persistence.spi.CriteriaBuilderConfiguration;
+import com.blazebit.persistence.view.EntityViewManager;
+import com.blazebit.persistence.view.spi.EntityViewConfiguration;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -24,5 +26,12 @@ public class BlazePersistenceConfiguration {
         CriteriaBuilderConfiguration config = Criteria.getDefault();
         // do some configuration
         return config.createCriteriaBuilderFactory(entityManagerFactory);
+    }
+
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+    @Lazy(false)
+    public EntityViewManager createEntityViewManager(CriteriaBuilderFactory cbf, EntityViewConfiguration config) {
+        return config.createEntityViewManager(cbf);
     }
 }

@@ -1,8 +1,6 @@
 package com.example.sb3.web;
 
 import com.example.sb3.domain.Role;
-import com.example.sb3.dto.RoleDto;
-import com.example.sb3.dto.RoleMapper;
 import com.example.sb3.service.RoleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +14,9 @@ public class RoleController {
     }
 
     @PostMapping
-    public void save(@RequestBody RoleDto dto) {
+    public void save(@RequestBody Role dto) {
 //        RoleMapper mapper = Mappers.getMapper(RoleMapper.class);
-        this.service.save(RoleMapper.INSTANCE.roleDtoToRole(dto));
+        this.service.save(dto);
     }
 
     @GetMapping
