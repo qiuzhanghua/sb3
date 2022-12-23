@@ -1,4 +1,5 @@
 package com.example.sb3.domain;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
@@ -6,7 +7,7 @@ import java.util.Objects;
 
 @Embeddable
 public class UserRoleKey implements Serializable {
-    @Column(name="role_id")
+    @Column(name = "role_id")
     private String roleId;
     @Column(name = "user_id")
     private String userId;

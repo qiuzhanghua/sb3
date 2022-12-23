@@ -6,6 +6,7 @@ pluginManagement {
     val bootVersion: String by settings
     val depVersion: String by settings
     val gitPropVersion: String by settings
+    val rewriteVersion: String by settings
 
     repositories {
         mavenCentral()
@@ -20,6 +21,7 @@ pluginManagement {
         kotlin("kapt") version kotlinVersion
         id("com.github.johnrengelman.shadow") version shadowVersion
         id("com.gorylenko.gradle-git-properties") version gitPropVersion
+        id("org.openrewrite.rewrite") version rewriteVersion
     }
 
 }

@@ -1,4 +1,5 @@
 package com.example.sb3.domain;
+
 import jakarta.persistence.*;
 
 @Entity

@@ -8,7 +8,7 @@ plugins {
 	kotlin("plugin.jpa")
 //	kotlin("kapt")
 	id("com.gorylenko.gradle-git-properties")
-//	id("io.spring.dependency-management")
+	id("org.openrewrite.rewrite")
 //	application
 //	id("com.github.johnrengelman.shadow")
 }
@@ -113,6 +113,11 @@ tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
 	}
 }
 
+rewrite {
+	activeRecipe(
+		"org.openrewrite.java.format.AutoFormat",
+	)
+}
 //application {
 //	mainClass.set("com.example.sb3.App")
 //}
