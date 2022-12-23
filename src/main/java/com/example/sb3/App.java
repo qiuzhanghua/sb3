@@ -20,7 +20,7 @@ public class App {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(EntityManagerFactory emf) {
+    CommandLineRunner commandLineRunner(EntityManagerFactory emf) {
         return args -> {
             Role role1 = new Role();
             role1.setName("user");
