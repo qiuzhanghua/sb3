@@ -32,8 +32,8 @@ val guavaVersion: String by project
 val querydslVersion: String by project
 val blazeVersion: String by project
 
-// Customizing Tomcat version to 10.1.2 instead of 10.1.1
-// extra["tomcat.version"] = "10.1.2"
+// Customizing Tomcat version to 10.1.4
+// extra["tomcat.version"] = "10.1.4"
 // or defined in gradle.properties
 
 dependencies {
