@@ -13,89 +13,97 @@ import java.util.Objects;
 @Table(name = "roles")
 public class Role {
 
-    @OneToMany(mappedBy = "role")
-    List<UserRole> users;
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-    @Column(name = "name", unique = true, nullable = false, length = 240)
-    private String name;
-    @CreationTimestamp
-    @Column(name = "created_at", insertable = true, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-    @UpdateTimestamp
-    @Column(name = "updated_at", insertable = false, updatable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
-    @Column(name = "deleted_at", insertable = false, updatable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedAt;
+	@OneToMany(mappedBy = "role")
+	List<UserRole> users;
 
-    public String getName() {
-        return name;
-    }
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private String id;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	@Column(name = "name", unique = true, nullable = false, length = 240)
+	private String name;
 
-    public String getId() {
-        return id;
-    }
+	@CreationTimestamp
+	@Column(name = "created_at", insertable = true, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	@UpdateTimestamp
+	@Column(name = "updated_at", insertable = false, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedAt;
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
+	@Column(name = "deleted_at", insertable = false, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date deletedAt;
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
-    }
+	public Date getCreatedAt() {
+		return createdAt;
+	}
 
-    public List<UserRole> getUsers() {
-        return users;
-    }
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
-    public void setUsers(List<UserRole> users) {
-        this.users = users;
-    }
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role role = (Role) o;
-        return Objects.equals(id, role.id);
-    }
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+	public Date getDeletedAt() {
+		return deletedAt;
+	}
 
-    @Override
-    public String toString() {
-        return "Role{" + "id='" + id + '\'' + ", name='" + name + '\'' + '}';
-    }
+	public void setDeletedAt(Date deletedAt) {
+		this.deletedAt = deletedAt;
+	}
+
+	public List<UserRole> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserRole> users) {
+		this.users = users;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Role role = (Role) o;
+		return Objects.equals(id, role.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public String toString() {
+		return "Role{" + "id='" + id + '\'' + ", name='" + name + '\'' + '}';
+	}
+
 }

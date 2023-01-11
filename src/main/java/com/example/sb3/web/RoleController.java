@@ -9,20 +9,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {
-    private final RoleService service;
 
-    public RoleController(RoleService service) {
-        this.service = service;
-    }
+	private final RoleService service;
 
-    @PostMapping
-    public void save(@RequestBody RoleDto dto) {
-//        RoleMapper mapper = Mappers.getMapper(RoleMapper.class);
-        this.service.save(RoleMapper.INSTANCE.roleDtoToRole(dto));
-    }
+	public RoleController(RoleService service) {
+		this.service = service;
+	}
 
-    @GetMapping
-    public Iterable<Role> list() {
-        return service.list();
-    }
+	@PostMapping
+	public void save(@RequestBody RoleDto dto) {
+		// RoleMapper mapper = Mappers.getMapper(RoleMapper.class);
+		this.service.save(RoleMapper.INSTANCE.roleDtoToRole(dto));
+	}
+
+	@GetMapping
+	public Iterable<Role> list() {
+		return service.list();
+	}
+
 }

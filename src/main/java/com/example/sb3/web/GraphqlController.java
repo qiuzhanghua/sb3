@@ -13,16 +13,18 @@ import java.util.stream.StreamSupport;
 
 @Controller
 public class GraphqlController {
-    private final RoleService service;
 
-    public GraphqlController(RoleService service) {
-        this.service = service;
-    }
+	private final RoleService service;
 
-    @QueryMapping
-    public List<Role> roles() {
-        // List<Role> all = ImmutableList.copyOf(service.list());
-        // List<Role> all = IteratorUtils.toList(service.list().iterator());
-        return StreamSupport.stream(service.list().spliterator(), false).collect(Collectors.toList());
-    }
+	public GraphqlController(RoleService service) {
+		this.service = service;
+	}
+
+	@QueryMapping
+	public List<Role> roles() {
+		// List<Role> all = ImmutableList.copyOf(service.list());
+		// List<Role> all = IteratorUtils.toList(service.list().iterator());
+		return StreamSupport.stream(service.list().spliterator(), false).collect(Collectors.toList());
+	}
+
 }

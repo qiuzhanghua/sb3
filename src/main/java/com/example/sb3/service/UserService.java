@@ -8,18 +8,20 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
-    private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+	private final UserRepository userRepository;
 
-    public User findByEmail(String email) {
-        return this.userRepository.findByEmail(email);
-    }
+	public UserService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
-    @Transactional
-    public void save(User user) {
-        this.userRepository.save(user);
-    }
+	public User findByEmail(String email) {
+		return this.userRepository.findByEmail(email);
+	}
+
+	@Transactional
+	public void save(User user) {
+		this.userRepository.save(user);
+	}
+
 }

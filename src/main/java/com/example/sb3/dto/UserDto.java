@@ -1,31 +1,35 @@
 package com.example.sb3.dto;
 
 public class UserDto {
-    private String id;
-    private String name;
-    private String email;
 
-    public String getId() {
-        return id;
-    }
+	private String id;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	private String name;
 
-    public String getName() {
-        return name;
-    }
+	private String email;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

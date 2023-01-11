@@ -7,19 +7,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoleService {
-    private final RoleRepository repository;
 
-    public RoleService(RoleRepository repository) {
-        this.repository = repository;
-    }
+	private final RoleRepository repository;
 
+	public RoleService(RoleRepository repository) {
+		this.repository = repository;
+	}
 
-    @Transactional
-    public void save(Role role) {
-        repository.save(role);
-    }
+	@Transactional
+	public void save(Role role) {
+		repository.save(role);
+	}
 
-    public Iterable<Role> list() {
-        return repository.findAll();
-    }
+	public Iterable<Role> list() {
+		return repository.findAll();
+	}
+
 }
