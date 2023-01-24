@@ -9,6 +9,8 @@ plugins {
 //	kotlin("kapt")
 	id("com.gorylenko.gradle-git-properties")
 	id("org.openrewrite.rewrite")
+	id("io.spring.javaformat")
+	checkstyle
 //	application
 //	id("com.github.johnrengelman.shadow")
 }
@@ -69,6 +71,8 @@ dependencies {
 //	implementation(platform("org.openrewrite.recipe:rewrite-recipe-bom:1.13.1"))
 	rewrite("org.openrewrite.recipe:rewrite-migrate-java:1.15.0")
 	rewrite("org.openrewrite.recipe:rewrite-spring:4.31.0")
+	checkstyle("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.35")
+	checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.35")
 }
 
 tasks.withType<JavaCompile> {
@@ -123,6 +127,10 @@ rewrite {
 		"org.openrewrite.java.spring.boot3.SpringBoot2To3Migration", // not ready ?
 	)
 }
+
+//checkstyle {
+//	toolVersion = "10.6.0"
+//}
 //application {
 //	mainClass.set("com.example.sb3.App")
 //}

@@ -7,6 +7,7 @@ pluginManagement {
     val depVersion: String by settings
     val gitPropVersion: String by settings
     val rewriteVersion: String by settings
+    val springFormartVersion:String by settings
 
     repositories {
         mavenCentral()
@@ -22,6 +23,7 @@ pluginManagement {
         id("com.github.johnrengelman.shadow") version shadowVersion
         id("com.gorylenko.gradle-git-properties") version gitPropVersion
         id("org.openrewrite.rewrite") version rewriteVersion
+        id("io.spring.javaformat") version springFormartVersion
     }
 
 }

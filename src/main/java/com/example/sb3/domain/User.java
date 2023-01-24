@@ -1,16 +1,18 @@
+/*
+ * Copyright (2023) The 邱张华 Authors.
+ */
 package com.example.sb3.domain;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-@Entity()
+@Entity
 @Table(name = "users")
 public class User {
 
@@ -50,7 +52,7 @@ public class User {
 	private Date deletedAt;
 
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(String id) {
@@ -58,7 +60,7 @@ public class User {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -66,7 +68,7 @@ public class User {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -74,7 +76,7 @@ public class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -82,7 +84,7 @@ public class User {
 	}
 
 	public Date getCreatedAt() {
-		return createdAt;
+		return this.createdAt;
 	}
 
 	public void setCreatedAt(Date createdAt) {
@@ -90,7 +92,7 @@ public class User {
 	}
 
 	public Date getUpdatedAt() {
-		return updatedAt;
+		return this.updatedAt;
 	}
 
 	public void setUpdatedAt(Date updatedAt) {
@@ -98,7 +100,7 @@ public class User {
 	}
 
 	public Date getDeletedAt() {
-		return deletedAt;
+		return this.deletedAt;
 	}
 
 	public void setDeletedAt(Date deletedAt) {
@@ -106,7 +108,7 @@ public class User {
 	}
 
 	public List<UserRole> getRoles() {
-		return roles;
+		return this.roles;
 	}
 
 	public void setRoles(List<UserRole> roles) {
@@ -118,7 +120,7 @@ public class User {
 	}
 
 	public Depart getDepart() {
-		return depart;
+		return this.depart;
 	}
 
 	public void setDepart(Depart depart) {
@@ -132,17 +134,18 @@ public class User {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		User user = (User) o;
-		return Objects.equals(id, user.id);
+		return Objects.equals(this.id, user.id);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(this.id);
 	}
 
 	@Override
 	public String toString() {
-		return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", email='" + email + '\'' + '}';
+		return "User{" + "id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", email='" + this.email + '\''
+				+ '}';
 	}
 
 }
