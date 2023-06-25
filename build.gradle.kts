@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "com.example"
-version = "0.0.2-SNAPSHOT"
+version = "0.0.3-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -57,7 +57,7 @@ dependencies {
 	runtimeOnly("com.blazebit:blaze-persistence-core-impl-jakarta:${blazeVersion}")
 	implementation("com.blazebit:blaze-persistence-entity-view-api-jakarta:${blazeVersion}")
 	runtimeOnly("com.blazebit:blaze-persistence-entity-view-impl-jakarta:${blazeVersion}")
-	runtimeOnly("com.blazebit:blaze-persistence-integration-hibernate-6.0:${blazeVersion}")
+	runtimeOnly("com.blazebit:blaze-persistence-integration-hibernate-6.2:${blazeVersion}")
 	compileOnly("com.blazebit:blaze-persistence-entity-view-processor:${blazeVersion}")
 	implementation("com.blazebit:blaze-persistence-integration-entity-view-spring:${blazeVersion}")
 
@@ -65,9 +65,9 @@ dependencies {
 	implementation("com.blazebit:blaze-persistence-integration-spring-data-2.7:${blazeVersion}")
 
 	compileOnly("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
-	compileOnly("com.sun.xml.bind:jaxb-impl:4.0.1")
+	compileOnly("com.sun.xml.bind:jaxb-impl:4.0.3")
 	compileOnly("jakarta.transaction:jakarta.transaction-api:2.0.1")
-	compileOnly("jakarta.activation:jakarta.activation-api:2.1.0")
+	compileOnly("jakarta.activation:jakarta.activation-api:2.1.2")
 	compileOnly("jakarta.annotation:jakarta.annotation-api:2.1.1")
 //	compileOnly("jakarta.persistence:jakarta.persistence-api:3.1.0")
 
