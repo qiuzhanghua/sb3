@@ -22,8 +22,8 @@ pluginManagement {
         kotlin("kapt") version kotlinVersion
         id("com.github.johnrengelman.shadow") version shadowVersion
         id("com.gorylenko.gradle-git-properties") version gitPropVersion
-        id("org.openrewrite.rewrite") version rewriteVersion
-        id("io.spring.javaformat") version springFormartVersion
+//        id("org.openrewrite.rewrite") version rewriteVersion
+//        id("io.spring.javaformat") version springFormartVersion
     }
 
 }
